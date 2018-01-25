@@ -1,0 +1,31 @@
+version: '3.1'
+
+services:
+
+  wordpress:
+    image: wordpress:php5.6-fpm
+    restart: always
+    environment:
+      WORDPRESS_DB_PASSWORD: 123456
+    volumes:
+      - ../php-fpm/wordpress.conf:/usr/local/etc/php-fpm.d/wordpress.conf
+      - ../wordpress:/var/www/html
+
+  nginx:
+    image: nginx:latest
+    restart: always
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - ../nginx:/etc/nginx/conf.d
+      - ../log_nginx:/var/log/nginx
+      - ../wordpress:/var/www/html
+
+  mysql:
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: 123456
+    volumes:
+      - ../mysql:/var/lib/mysql
