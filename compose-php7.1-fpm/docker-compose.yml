@@ -3,6 +3,7 @@ version: '3.1'
 services:
 
   wordpress:
+    container_name: docker_my_wordpress
     image: wordpress:php7.1-fpm
     restart: always
     environment:
@@ -12,6 +13,7 @@ services:
       - ../wordpress:/var/www/html
 
   nginx:
+    container_name: docker_my_nginx
     image: nginx:latest
     restart: always
     ports:
@@ -23,6 +25,7 @@ services:
       - ../wordpress:/var/www/html
 
   mysql:
+    container_name: docker_my_mysql
     image: mysql:5.7
     restart: always
     environment:
