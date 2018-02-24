@@ -1,9 +1,9 @@
 #!/bin/bash
 
-cwdir=`pwd`
-rootdir=`dirname "$0"`
-cd "$rootdir"
-rootdir=`pwd`
+root_cwdir=`pwd`
+root_rootdir=`dirname "$0"`
+cd "$root_rootdir"
+root_rootdir=`pwd`
 
 container_id=`docker ps -a -q -f name=docker_my_wordpress`
 if [ -n "$container_id" ]; then
@@ -23,4 +23,6 @@ if [ -n "$container_id" ]; then
     docker rm -v docker_my_mysql
 fi
 
-cd "$cwdir"
+./mod.sh
+
+cd "$root_cwdir"

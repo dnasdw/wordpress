@@ -7,4 +7,6 @@ rootdir=`pwd`
 
 docker-compose up -d
 
+../mod.sh
+
 cd "$cwdir"

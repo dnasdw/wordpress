@@ -1,9 +1,9 @@
 #!/bin/bash
 
-cwdir=`pwd`
-rootdir=`dirname "$0"`
-cd "$rootdir"
-rootdir=`pwd`
+root_cwdir=`pwd`
+root_rootdir=`dirname "$0"`
+cd "$root_rootdir"
+root_rootdir=`pwd`
 
 ./stop.sh
 
@@ -37,4 +37,4 @@ if [ -d wordpress ]; then
     mv wordpress last_wordpress
 fi
 
-cd "$cwdir"
+cd "$root_cwdir"
